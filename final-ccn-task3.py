@@ -10,7 +10,11 @@ def calc(choice):
     num1 = float(input("[1] Enter the first number: ")) # Define num1 by user input as a float to allow for decimals.
     num2 = float(input("[2] Enter the second number: ")) # Define num2 by user input as a float to allow for decimals.
     opr = f'{num1}{choice}{num2}' # Define the operation that needs to be run.
-    exec(f'ans = {opr}', globals()) # Store the answer for the operation as the variable 'ans'.
+    try:
+        exec(f'ans = {opr}', globals()) # Store the answer for the operation as the variable 'ans'.
+    except ZeroDivisionError:
+        print("Cannot divide by zero!")
+        mainMenu()
     print(f'\n[A] The Answer is: {ans}') # Print the answer.
 
 def mainMenu():
